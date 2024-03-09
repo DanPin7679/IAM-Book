@@ -1,0 +1,42 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Theory Review
+    chapters:
+      - file: BookContent/1-TheoryReview/0-Intro/0-intro
+      - file: BookContent/1-TheoryReview/EconoModule/1-intro
+        sections:
+          - file: BookContent/1-TheoryReview/EconoModule/2-env-econo
+          - file: BookContent/1-TheoryReview/EconoModule/3-clim-econo
+          - file: BookContent/1-TheoryReview/EconoModule/4-ecolo-econo
+          - file: BookContent/1-TheoryReview/EconoModule/5-indus-ecolo
+      - file: BookContent/1-TheoryReview/PhysicsModule/1-intro
+      - file: BookContent/1-TheoryReview/SocialModule/1-intro
+  - caption: Modelling Review
+    chapters:
+      - file: BookContent/2-ModellingReview/1-intro
+      - file: BookContent/2-ModellingReview/2-system-model
+      - file: BookContent/2-ModellingReview/3-classification
+  - caption: Framework
+    chapters:
+      - file: BookContent/3-Framework/0-intro
+      - file: BookContent/3-Framework/1-IAM
+      - file: BookContent/3-Framework/2-User
+  - caption: Models Analysis
+    chapters:
+      - file: BookContent/4-ModelsAnalysis/IAM/intro
+      - file: BookContent/4-ModelsAnalysis/Models/intro
+        sections:
+          - file: BookContent/4-ModelsAnalysis/Models/dice
+  - caption: User Analysis
+    chapters:
+      - file: BookContent/5-UsersAnalysis/IPCC
+      - file: BookContent/5-UsersAnalysis/pension-plan
+      - file: BookContent/5-UsersAnalysis/insurance-company
+  - caption: Appendix
+    chapters:
+      - file: BookContent/9-Appendix/Models/intro
+      - file: bibli

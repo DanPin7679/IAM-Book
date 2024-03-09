@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dice Model &#8212; IAM, a User Perpective</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystyle.css?v=a753409f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'BookContent/4-ModelsAnalysis/Models/dice';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="IPCC" href="../../5-UsersAnalysis/IPCC.html" />
+    <link rel="prev" title="Selected Models Analysis" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">IAM, a User Perpective</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theory Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../1-TheoryReview/0-Intro/0-intro.html">Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../1-TheoryReview/EconoModule/1-intro.html">Economics and the Planet</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../1-TheoryReview/EconoModule/2-env-econo.html">Environmental Economics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../1-TheoryReview/EconoModule/3-clim-econo.html">Economics of Climate Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../1-TheoryReview/EconoModule/4-ecolo-econo.html">Ecological Economics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../1-TheoryReview/EconoModule/5-indus-ecolo.html">Industrial Ecology</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../1-TheoryReview/PhysicsModule/1-intro.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../1-TheoryReview/SocialModule/1-intro.html">Social</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelling Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2-ModellingReview/1-intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2-ModellingReview/2-system-model.html">Dynamic System Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2-ModellingReview/3-classification.html">IAM Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../3-Framework/0-intro.html">Modelling Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3-Framework/1-IAM.html">IAM Analysis Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3-Framework/2-User.html">User Contextualized IAM Analysis Framework</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../IAM/intro.html">Integrated Assessment Model (IAM)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Selected Models Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dice Model</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../5-UsersAnalysis/IPCC.html">IPCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5-UsersAnalysis/pension-plan.html">Pension Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5-UsersAnalysis/insurance-company.html">Insurance Company</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../9-Appendix/Models/intro.html">Models implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bibli.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBookContent/4-ModelsAnalysis/Models/dice.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/BookContent/4-ModelsAnalysis/Models/dice.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dice Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-description">Model Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation">Mathematical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#le-probleme">Le Problème</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-objectif">Fonction Objectif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-d-utilite">Function d’utilité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-population">Module Population</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-economique">Module Économique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-cycle-du-carbone">Module Cycle du carbone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions">Émissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-du-carbone">Concentration du carbone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Température</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-impacts-module">Economic Impacts Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#damages">Damages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigation-costs">Mitigation Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-factor">Climate Factor</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dice-model">
+<span id="id1"></span><h1>Dice Model<a class="headerlink" href="#dice-model" title="Link to this heading">#</a></h1>
+<p>For a compact repr/sentation of the model and an Python implementation go to <a class="reference internal" href="../../9-Appendix/Models/dice.html#dice-impl"><span class="std std-ref">Dice Implementation</span></a>.</p>
+<p>The DICE model is an integrated model that incorporates the dynamics of emissions and economic impacts as well as the economic costs of policies to curb emissions <span id="id2">[<a class="reference internal" href="../../../bibli.html#id2" title="William D. Nordhaus. An Optimal Transition Path for Controlling Greenhouse Gases. Science, 258(5086):1315–1319, 1992. Publisher: American Association for the Advancement of Science. URL: https://www.jstor.org/stable/2880417 (visited on 2024-02-10).">Nordhaus, 1992</a>]</span>.</p>
+<section id="system">
+<h2>System<a class="headerlink" href="#system" title="Link to this heading">#</a></h2>
+</section>
+<section id="model-description">
+<h2>Model Description<a class="headerlink" href="#model-description" title="Link to this heading">#</a></h2>
+<p>The model represent a global economy and a global climate which are interconnected through two interfaces, emissions and damages.</p>
+<a class="reference internal image-reference" href="../../../_images/Dice.jpg"><img alt="../../../_images/Dice.jpg" src="../../../_images/Dice.jpg" style="width: 100%;" /></a>
+</section>
+<section id="mathematical-representation">
+<h2>Mathematical Representation<a class="headerlink" href="#mathematical-representation" title="Link to this heading">#</a></h2>
+</section>
+<section id="le-probleme">
+<h2>Le Problème<a class="headerlink" href="#le-probleme" title="Link to this heading">#</a></h2>
+<p>Le module économique est basée sur le modèle intertemporèle de Ramsey.</p>
+<section id="fonction-objectif">
+<h3>Fonction Objectif<a class="headerlink" href="#fonction-objectif" title="Link to this heading">#</a></h3>
+<p>Le décision principale à laquelle fait face cette économie est de choisir entre consommer, investir dans du capital productif ou dans du capital permettant de réduire les émissions.</p>
+<p>Ainsi le problème se résume à maximiser la function objectif suivante:</p>
+<p>$$
+\max_{[c_(t)]} \sum_{t=1}^{T}{U[c(t), P(t)] (1+ \rho)^{-t}}
+$$</p>
+<p>où:</p>
+<ul class="simple">
+<li><p>$U$ est le niveau d’utilité</p></li>
+<li><p>$c(t)$ est le flux de consomation par capita au temps t</p></li>
+<li><p>$P(t)$ est le niveau de la population au temps t</p></li>
+<li><p>$p$ est le pure taux de la préférence temporale de la société</p></li>
+</ul>
+<p>The objective function is then the discounted sum of the utilities of consumption, U[c(t),P(t)], summed over the relevant time horizon from t = 1 to t = T. The maximization is subject to two sets of constraints: first, a conventional set of economic constraints; and second, the specific set of emissionsclimate-economy constraints. Economic constraints.</p>
+</section>
+<section id="function-d-utilite">
+<h3>Function d’utilité<a class="headerlink" href="#function-d-utilite" title="Link to this heading">#</a></h3>
+<p>La function d’utilité est décrite de façon suivante :</p>
+<p>$$
+U_{[c_(t)]} = P(t) (c(t)^{1-\alpha} - 1) / (1 - \alpha)
+$$</p>
+<p>où:</p>
+<ul class="simple">
+<li><p>$\alpha$ mesure le taux d’aversion à l’inéqualité. Quand $\alpha = 0$, cette fonction est linéaire implicant aucune aversion.</p></li>
+</ul>
+</section>
+</section>
+<section id="module-population">
+<h2>Module Population<a class="headerlink" href="#module-population" title="Link to this heading">#</a></h2>
+<p>Bien que la population est. ormaement décrite en tant qu’élément du module économique, ici nous préférons la séparé afin de garder une meilleure cohérance avec les autres modèles présentés.</p>
+<p>Pour ce qui est du modèele Dice, la population est une variable exogène avec la dynamique suivante:</p>
+<p>$$
+P(t) = P(t -1) (1+g)
+$$
+where $g$ is the population growth rate.</p>
+</section>
+<section id="module-economique">
+<h2>Module Économique<a class="headerlink" href="#module-economique" title="Link to this heading">#</a></h2>
+<p>La dynamique principale du module économique est représentée par une fonction de production Cobb-Douglass:
+$$
+Q(t) = \Omega(t) A(t) K(t)^{\gamma} P(t)^{1 - \gamma}
+$$
+où:</p>
+<ul class="simple">
+<li><p>$Q(t)$ est la production au temps t</p></li>
+<li><p>$\gamma$ représente l’élasticité du capital par rapport à la productionest le niveau d’utilité</p></li>
+<li><p>$A(t)$ est le niveau de technologie disponible au temps t</p></li>
+<li><p>$K(t)$ est le capital disponible au temps t.</p></li>
+</ul>
+<p>Un élément a été ajouté à cette function, soit l’interface avec le module du climat, , qui est le niveau d’impacts du climat sur l’économie.</p>
+<p>Les autres dynamiques de ce modèle économique sont:</p>
+<p>$$
+\begin{aligned}
+Q(t) = C(t) + I(t) \
+K(t) = (1- \delta_{k} K(t-1) + I(t)
+\end{aligned}
+$$</p>
+</section>
+<section id="module-cycle-du-carbone">
+<h2>Module Cycle du carbone<a class="headerlink" href="#module-cycle-du-carbone" title="Link to this heading">#</a></h2>
+<section id="emissions">
+<h3>Émissions<a class="headerlink" href="#emissions" title="Link to this heading">#</a></h3>
+<p>Les émissions viennent bouclé la boucle et fwrmé notre modèle intégré en servant d’interface entre l’économie et le climat. La function décrivant les émissions est
+$$
+E(t) = (1 - u(t)) \sigma(t) Q(t)
+$$
+où:</p>
+<ul class="simple">
+<li><p>$E(t)$ est l’émission des gaz à effet deserres</p></li>
+<li><p>$a(t)$ est le ratio des émissions non controllé par rapport à la production, et est déterminé par des données historique</p></li>
+<li><p>$u(t)$ est une varibles décisionnells qui est déterminé par optimisation.</p></li>
+</ul>
+</section>
+<section id="concentration-du-carbone">
+<h3>Concentration du carbone<a class="headerlink" href="#concentration-du-carbone" title="Link to this heading">#</a></h3>
+<p>L’accumulation du dioxide de carbone est représenté par un modèle en boite réduit à:
+$$
+M(t) = \beta E(t) + (1 - \delta_M) M(t - 1)
+$$
+où</p>
+<ul class="simple">
+<li><p>$M(t)$ est la concentration de $CO_2$ relative to l’ère pré-industrielle</p></li>
+<li><p>$\beta$ est le taux marginal de rétention atmossphérique</p></li>
+<li><p>$\delta_M$ est le taux de transfert des réservoirs à l’océan profond.</p></li>
+</ul>
+</section>
+<section id="temperature">
+<h3>Température<a class="headerlink" href="#temperature" title="Link to this heading">#</a></h3>
+<p>À cette fin, le modèle DICE s’appuie sur Schneider et Thompson pour les équations de base. Dans cette approche, le système climatique est caractérisé par un système multicouche comprenant l’atmosphère, la couche mixte des océans et les océans profonds.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b50df4f3-56c7-4165-80c1-5744fa784ce5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b50df4f3-56c7-4165-80c1-5744fa784ce5" title="Permalink to this equation">#</a></span>\[\begin{align}
+T_1(t) = T_1(t-1) + \frac{1}{R_1}(F_t - \lambda T_1(t-1) - \frac{R_2}{\gamma_2}(T_1(t-1)-T_2(t-1))
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-bbecb774-faa4-466c-b23d-5de21215e99d">
+<span class="eqno">(2)<a class="headerlink" href="#equation-bbecb774-faa4-466c-b23d-5de21215e99d" title="Permalink to this equation">#</a></span>\[\begin{align}
+T_2(t) = T_2(t-1) + \frac{1}{R_2}(T_1(t-1)-T_2(t-1))
+\end{align}\]</div>
+<p>où</p>
+<ul class="simple">
+<li><p>$T_i(t)$ est la température de la couche i à la période t (relatif à 1900);</p></li>
+<li><p>$F(t)$ est le forçage radiatif dans l’atmosphère provenant des gaz à effets de serres (relatif à 1900);</p></li>
+<li><p>$R_i$ est la capicité thermale des différentes couches</p></li>
+<li><p>$\lambda$ est le retour d’information du climat</p></li>
+</ul>
+</section>
+</section>
+<section id="economic-impacts-module">
+<h2>Economic Impacts Module<a class="headerlink" href="#economic-impacts-module" title="Link to this heading">#</a></h2>
+<section id="damages">
+<h3>Damages<a class="headerlink" href="#damages" title="Link to this heading">#</a></h3>
+<p>Therefore, the final relation between global temperature increase and income loss is
+$$
+d(t) = 0.0133 (\frac{T(t)}{3})^2
+$$
+where</p>
+<ul class="simple">
+<li><p>$d(t)$ is the fractional loss of global output from greenhouse warming.</p></li>
+</ul>
+</section>
+<section id="mitigation-costs">
+<h3>Mitigation Costs<a class="headerlink" href="#mitigation-costs" title="Link to this heading">#</a></h3>
+<p>The equation used in the model is
+$$
+TC(t) = b_1 u(t)^{b2} = 0.0686 u(t)^{2.887}
+$$
+where</p>
+<ul class="simple">
+<li><p>$TC(t)$ is the fractional cost to global output from GHG emissions control</p></li>
+<li><p>$b1$ and $b2$ are constant</p></li>
+</ul>
+</section>
+<section id="climate-factor">
+<h3>Climate Factor<a class="headerlink" href="#climate-factor" title="Link to this heading">#</a></h3>
+<p>Combining the cost and damage relations yields the climate factor, fl, in the production function
+$$
+\Omega(t) = \frac{1 - TC(t)}{1+d(t)}
+$$</p>
+<p>To see a more compact mathematical representation and a Python inplementation go to Dice Implementation.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./BookContent/4-ModelsAnalysis/Models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Selected Models Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../5-UsersAnalysis/IPCC.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">IPCC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-description">Model Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation">Mathematical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#le-probleme">Le Problème</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fonction-objectif">Fonction Objectif</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-d-utilite">Function d’utilité</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-population">Module Population</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-economique">Module Économique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-cycle-du-carbone">Module Cycle du carbone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions">Émissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concentration-du-carbone">Concentration du carbone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Température</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-impacts-module">Economic Impacts Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#damages">Damages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigation-costs">Mitigation Costs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-factor">Climate Factor</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dany Pineault
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
