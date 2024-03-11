@@ -214,7 +214,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../9-Appendix/Models/intro.html">Models implementation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../9-Appendix/Models/intro.html">Models implementation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../9-Appendix/Models/dice.html">Dice Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../9-Appendix/Models/SolowModel.html">The Solow-Swan Growth Model</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bibli.html">Bibliography</a></li>
 </ul>
 
@@ -552,12 +556,12 @@ où</p>
 <section id="temperature">
 <h3>Température<a class="headerlink" href="#temperature" title="Link to this heading">#</a></h3>
 <p>À cette fin, le modèle DICE s’appuie sur Schneider et Thompson pour les équations de base. Dans cette approche, le système climatique est caractérisé par un système multicouche comprenant l’atmosphère, la couche mixte des océans et les océans profonds.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b50df4f3-56c7-4165-80c1-5744fa784ce5">
-<span class="eqno">(1)<a class="headerlink" href="#equation-b50df4f3-56c7-4165-80c1-5744fa784ce5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bce12f60-a93a-49a8-ac5a-c68cd23948d7">
+<span class="eqno">(1)<a class="headerlink" href="#equation-bce12f60-a93a-49a8-ac5a-c68cd23948d7" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_1(t) = T_1(t-1) + \frac{1}{R_1}(F_t - \lambda T_1(t-1) - \frac{R_2}{\gamma_2}(T_1(t-1)-T_2(t-1))
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-bbecb774-faa4-466c-b23d-5de21215e99d">
-<span class="eqno">(2)<a class="headerlink" href="#equation-bbecb774-faa4-466c-b23d-5de21215e99d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9c25f854-308e-4d83-a239-84a7123a8cfd">
+<span class="eqno">(2)<a class="headerlink" href="#equation-9c25f854-308e-4d83-a239-84a7123a8cfd" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_2(t) = T_2(t-1) + \frac{1}{R_2}(T_1(t-1)-T_2(t-1))
 \end{align}\]</div>
 <p>où</p>

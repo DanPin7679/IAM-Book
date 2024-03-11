@@ -213,7 +213,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../9-Appendix/Models/intro.html">Models implementation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../9-Appendix/Models/intro.html">Models implementation</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../9-Appendix/Models/dice.html">Dice Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../9-Appendix/Models/SolowModel.html">The Solow-Swan Growth Model</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../bibli.html">Bibliography</a></li>
 </ul>
 
@@ -418,6 +422,25 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interdisciplinarity">Interdisciplinarity</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-of-abstraction">Layers of Abstraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition-and-goal">Problem Definition and Goal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-components">Conceptual Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implemantation-components">Implemantation Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-language">Modelling Language</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software">Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritms">Algoritms</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -450,6 +473,50 @@ document.write(`
 </section>
 <section id="interdisciplinarity">
 <h3>Interdisciplinarity<a class="headerlink" href="#interdisciplinarity" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="layers-of-abstraction">
+<h2>Layers of Abstraction<a class="headerlink" href="#layers-of-abstraction" title="Link to this heading">#</a></h2>
+<p>When trying to answer a question through system modelling, the implementation details should not influence the problem. The relation must be the other way around. The problem influence the system boundaries, which influence the model, which influence the implementation details.</p>
+<p>In practice though, because many problem are untrackable, a two ways influence relationship exit between the model and the implementation details. This relationship take the form of a compromise between complexity of the model and trackability of the implementation details.</p>
+<p>That being said, what is possible should still not influence the question and the problem definition.</p>
+<section id="problem-definition-and-goal">
+<h3>Problem Definition and Goal<a class="headerlink" href="#problem-definition-and-goal" title="Link to this heading">#</a></h3>
+<section id="question">
+<h4>Question<a class="headerlink" href="#question" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="conceptual-components">
+<h3>Conceptual Components<a class="headerlink" href="#conceptual-components" title="Link to this heading">#</a></h3>
+<section id="system">
+<h4>System<a class="headerlink" href="#system" title="Link to this heading">#</a></h4>
+<p>To assess the energy and economic systems within which we reside, a conceptual or philosophical framework can help us figure out if we are doing a good job. Are we assuming too much? Are we constraining ourselves to a limited set of explanations without realizing it? One such framework is naturalism.
+Sean Carroll, in The Big Picture, describes naturalism as considering:13</p>
+<ol class="arabic simple">
+<li><p>There is only one world, the natural world.</p></li>
+<li><p>The world evolves according to unbroken patterns, the laws of nature. 3. The only reliable way of learning about the world is by observing it.</p></li>
+</ol>
+<p>Importantly, the combinations of matter, energy, and information do not answer “why” or “should” questions. “Why does the widget exist?” “Should the widget exist?” We could go further to ask questions such as “Why do we exist?” and “What is the purpose of life?”</p>
+<p>Each system is defined by the boundaries that distinguish it from everything else. Some elements are within the system, and some are not. Think of systems residing within other systems as a set of Russian Matryoshka dolls where each doll nests within a larger doll. An energy and economic narrative could discuss a small or large boundary just like you could play with one of the small or large Matryoshka dolls.</p>
+</section>
+<section id="model">
+<h4>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h4>
+</section>
+<section id="scenario">
+<h4>Scenario<a class="headerlink" href="#scenario" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="implemantation-components">
+<h3>Implemantation Components<a class="headerlink" href="#implemantation-components" title="Link to this heading">#</a></h3>
+<section id="modelling-language">
+<h4>Modelling Language<a class="headerlink" href="#modelling-language" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading">#</a></h3>
+</section>
+<section id="algoritms">
+<h3>Algoritms<a class="headerlink" href="#algoritms" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -524,6 +591,25 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domains-expert">Domains Expert</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-science-expert">Computer Science Expert</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interdisciplinarity">Interdisciplinarity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-of-abstraction">Layers of Abstraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition-and-goal">Problem Definition and Goal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-components">Conceptual Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario">Scenario</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implemantation-components">Implemantation Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-language">Modelling Language</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software">Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritms">Algoritms</a></li>
 </ul>
 </li>
 </ul>

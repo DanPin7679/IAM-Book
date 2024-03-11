@@ -39,4 +39,7 @@ parts:
   - caption: Appendix
     chapters:
       - file: BookContent/9-Appendix/Models/intro
+        sections:
+          - file: BookContent/9-Appendix/Models/dice
+          - file: BookContent/9-Appendix/Models/SolowModel
       - file: bibli
